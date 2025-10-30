@@ -6,7 +6,7 @@ def build_standard_deck() -> list[dict]:
     special_rank = ['J','K','Q','A']
     for suite in suites:
         for rank in range(2,11):
-            deck.append(create_card(rank,suite))
+            deck.append(create_card(str(rank),suite))
         for special in special_rank:
             deck.append(create_card(special,suite))
 
@@ -37,8 +37,8 @@ def shuffle_conditions(suite_card, index):
     elif suite_card == 'C':
         return index % 3 == 0
     elif suite_card == 'D':
-        return  suite_card % 2 == 0
+        return  index % 2 == 0
     elif suite_card == 'S':
-        return  suite_card % 7 == 0
+        return  index % 7 == 0
 def get_suite(card):
     return card['suite']

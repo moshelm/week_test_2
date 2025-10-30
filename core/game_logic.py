@@ -1,4 +1,4 @@
-from player_io import ask_player_action
+from .player_io import ask_player_action
 def calculate_hand_value(hand:list[dict]) -> int:
     sum_hand = 0
     for card in hand:
@@ -38,14 +38,17 @@ def get_card(deck,hand):
         hand.append(deck.pop(0))
 
 def run_full_game(deck:list[dict], player:dict, dealer:dict) -> None :
+    print('game start')
     deal_two_each(deck,player,dealer)
     while True:
         player_action = ask_player_action()
         if player_action == 'H':
             get_card(deck,player['hand'])
             hand_value = calculate_hand_value(player['hand'])
+            print(hand_value)
             if hand_value > 21:
                 print('losser')
+                print(f"player with:{calculate_hand_value(player['hand'])}\ndealer with:{calculate_hand_value(dealer['hand'])}")
                 return
         elif player_action == 'S':
              if dealer_play(deck, dealer):
@@ -58,5 +61,5 @@ def run_full_game(deck:list[dict], player:dict, dealer:dict) -> None :
                  else:
                      print('draw')
                  print(f"player with:{value_hand_player}\ndealer with:{value_hand_dealer}")
-
+             return
 
