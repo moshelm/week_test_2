@@ -1,0 +1,12 @@
+# PyCharm
+.idea/
+
+# Virtual Environment
+venv/
+
+# Python compiled files
+__pycache__/
+*.pyc
+
+# Packaging metadata (שנוצר בהתקנה)
+*.egg-info/
